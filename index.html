@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estados da Venezuela</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<style>
+    /* Estilos gerais simplificados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho simplificado */
+header {
+    background-color: #f8f9fa;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+header p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #7f8c8d;
+}
+
+/* Navegação simples */
+nav {
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    color: #0038A8;
+    background-color: #f0f5ff;
+}
+
+/* Conteúdo principal */
+main {
+    padding: 40px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: #0038A8;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Seção Panorama Geral */
+.panorama-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
+    border-left: 4px solid #CE1126;
+}
+
+.panorama-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.panorama-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.panorama-text p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.panorama-image {
+    flex: 1;
+    min-width: 500px;
+    min-height: 200px;
+    text-align: center;
+}
+
+.panorama-image img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Cards de estados com cores da bandeira */
+.states-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.state-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid #0038A8;
+}
+
+.state-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards com referências às cores da bandeira */
+.state-card:nth-child(6n+1) {
+    border-top-color: #FFCC00; /* Amarelo */
+}
+
+.state-card:nth-child(6n+2) {
+    border-top-color: #0038A8; /* Azul */
+}
+
+.state-card:nth-child(6n+3) {
+    border-top-color: #CE1126; /* Vermelho */
+}
+
+.state-card:nth-child(6n+4) {
+    border-top-color: #FFCC00; /* Amarelo */
+}
+
+.state-card:nth-child(6n+5) {
+    border-top-color: #0038A8; /* Azul */
+}
+
+.state-card:nth-child(6n+6) {
+    border-top-color: #CE1126; /* Vermelho */
+}
+
+.state-card-header {
+    padding: 15px;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.state-card-body {
+    padding: 20px;
+}
+
+.state-card-body p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.state-card-body strong {
+    color: #2c3e50;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #0038A8;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #002a7a;
+}
+
+/* Seção de economia */
+.economy-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
+    border-left: 4px solid #FFCC00;
+}
+
+.economy-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+}
+
+.economy-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.economy-text p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.economy-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.economy-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Seção Principais Pontos */
+.points-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 50px;
+    border-left: 4px solid #CE1126;
+}
+
+.points-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.point-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #0038A8;
+}
+
+.point-card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.point-card p {
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Rodapé simples */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #ecf0f1;
+}
+
+.footer-section p, .footer-section li {
+    color: #bdc3c7;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 8px;
+}
+
+.footer-section a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #ecf0f1;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    color: #bdc3c7;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 5px 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .panorama-content,
+    .economy-content {
+        flex-direction: column;
+    }
+    
+    .points-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Venezuela</h1>
+            <p>Conheça a história, cultura e os estados que formam a Venezuela</p>
+        </div>
+    </header>
+    
+    <!-- Navegação -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#panorama">Panorama Geral</a></li>
+                <li><a href="#estados">Estados</a></li>
+                <li><a href="#pontos">Principais Pontos</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Conteúdo principal -->
+    <main class="container">
+        <!-- Seção Panorama Geral -->
+        <section id="panorama">
+            <h2 class="section-title">Panorama Geral da Venezuela</h2>
+            <div class="panorama-section">
+                <div class="panorama-content">
+                    <div class="panorama-text">
+                        <p>A Venezuela é dividida em <strong>23 estados</strong>, mais o <strong>Distrito Capital (Caracas)</strong> e <strong>dependências federais (ilhas)</strong>.</p>
+                        <p>Sua <strong>área total</strong> é de cerca de <strong>916.445 km²</strong>.</p>
+                        <p><strong>População estimada</strong> do país é de aproximadamente <strong>28 a 31 milhões</strong>, dependendo da fonte.</p>
+                        <p>A <strong>economia nacional</strong> é fortemente dependente de <strong>petróleo e gás natural</strong>, mas também há <strong>mineração, agricultura, pecuária e indústria química</strong>.</p>
+                        <p>A Venezuela passou por uma <strong>grave crise econômica</strong>: hiperinflação, crise cambial, queda na produção petrolífera.</p>
+                        <p>No entanto, há alguns <strong>sinais de recuperação ou estabilização pontual</strong>.</p>
+                    </div>
+                    <div class="panorama-image">
+                        <img src="data:image/jpeg;base64,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" alt="Mapa da Venezuela">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Estados -->
+        <section id="estados">
+            <h2 class="section-title">Estados da Venezuela</h2>
+            <div class="states-grid">
+                <!-- Estado 1 -->
+                <div class="state-card">
+                    <div class="state-card-header">
+                        <h3>Zulia</h3>
+                    </div>
+                    <div class="state-card-body">
+                        <p>Um dos mais populosos. Segundo dados, era o estado mais populoso em 2016.</p>
+                        <p><strong>Capital:</strong> Maracaibo</p>
+                        <p><strong>População:</strong> Um dos mais populosos</p>
+                        <p><strong>Economia:</strong> Muito dependente de petróleo e gás: a bacia do Lago de Maracaibo tem grandes reservas.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <!-- Estado 2 -->
+                <div class="state-card">
+                    <div class="state-card-header">
+                        <h3>Bolívar</h3>
+                    </div>
+                    <div class="state-card-body">
+                        <p>É o maior estado em extensão territorial (~240.528 km²), população relativamente baixa (~1,8 milhões em 2023).</p>
+                        <p><strong>Capital:</strong> Ciudad Bolívar</p>
+                        <p><strong>População:</strong> ~1,8 milhões (2023)</p>
+                        <p><strong>Economia:</strong> Mineração (ouro, ferro, bauxita), hidroeletricidade (represa de Guri), siderurgia (SIDOR), coltã.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <!-- Estado 3 -->
+                <div class="state-card">
+                    <div class="state-card-header">
+                        <h3>Táchira</h3>
+                    </div>
+                    <div class="state-card-body">
+                        <p>Estado localizado na região andina, faz fronteira com a Colômbia.</p>
+                        <p><strong>Capital:</strong> San Cristóbal</p>
+                        <p><strong>População:</strong> ~1,17 milhões (censo 2011)</p>
+                        <p><strong>Economia:</strong> Agricultura (café, abacaxi), pecuária; indústria de alimentos (processamento de batata, laticínios), têxtil.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <!-- Estado 4 -->
+                <div class="state-card">
+                    <div class="state-card-header">
+                        <h3>Carabobo</h3>
+                    </div>
+                    <div class="state-card-body">
+                        <p>Estado muito industrializado, localizado na região central do país.</p>
+                        <p><strong>Capital:</strong> Valencia</p>
+                        <p><strong>População:</strong> ~2,2 milhões (2011)</p>
+                        <p><strong>Economia:</strong> Muito industrializado: indústria metalúrgica, petroquímica, automotiva, cerâmica. Também tem cultivo agrícola.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <!-- Estado 5 -->
+                <div class="state-card">
+                    <div class="state-card-header">
+                        <h3>Nueva Esparta</h3>
+                    </div>
+                    <div class="state-card-body">
+                        <p>Estado insular (ilhas Margarita, Coche, Cubagua), conhecido por suas praias e turismo.</p>
+                        <p><strong>Capital:</strong> La Asunción</p>
+                        <p><strong>População:</strong> ~490.500 habitantes</p>
+                        <p><strong>Economia:</strong> Economia baseada em turismo (ilhas), pesca artesanal.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                </div>
+                
+                <!-- Estado 6 -->
+                <div class="state-card">
+                    <div class="state-card-header">
+                        <h3>Lara</h3>
+                    </div>
+                    <div class="state-card-body">
+                        <p>Estado conhecido por sua produção agrícola e por ser um importante centro cultural.</p>
+                        <p><strong>Capital:</strong> Barquisimeto</p>
+                        <p><strong>População:</strong> ~2 milhões (2021)</p>
+                        <p><strong>Economia:</strong> Agricultura (produção local), comércio e indústria leve; estado importante em termos populacionais.</p>
+                        <a href="#" class="btn">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Seção Principais Pontos -->
+        <section id="pontos">
+            <h2 class="section-title">Principais Pontos para Destacar</h2>
+            <div class="points-section">
+                <div class="points-grid">
+                    <div class="point-card">
+                        <h3>1. Desigualdade Territorial</h3>
+                        <p>Alguns estados são enormes e têm baixa densidade (como Bolívar), enquanto outros são menores e muito populosos (como Carabobo).</p>
+                    </div>
+                    <div class="point-card">
+                        <h3>2. Economia Diversificada por Estado</h3>
+                        <p>Nem todos dependem apenas do petróleo — embora ele seja dominante nacionalmente, estados como Bolívar têm mineração pesada, outros têm turismo (ilhas), outros indústria.</p>
+                    </div>
+                    <div class="point-card">
+                        <h3>3. Crise Macro</h3>
+                        <p>A crise econômica nacional (inflação, migração, problemas cambiais) afeta todos os estados, mas o impacto específico varia bastante.</p>
+                    </div>
+                    <div class="point-card">
+                        <h3>4. Migração</h3>
+                        <p>A Venezuela sofreu uma forte emigração nos últimos anos, o que impacta demografia e força de trabalho em todos os estados.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre a Venezuela</h3>
+                    <p>A Venezuela é um país localizado na América do Sul, conhecido por sua diversidade natural e cultural.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#panorama">Panorama Geral</a></li>
+                        <li><a href="#estados">Estados</a></li>
+                        <li><a href="#pontos">Principais Pontos</a></li>
+                    </ul>
+                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Venezuela - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            // Suavizar a rolagem para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
